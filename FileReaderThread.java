@@ -3,11 +3,11 @@ import java.io.FileReader;
 import java.util.concurrent.BlockingQueue;
 
 public class FileReaderThread {
-  
+
   private BlockingQueue<PCB> jobQueue;
 
-  public FileReaderThread(BlockingQueue<PCB> JQ){
-  this.jobQueue = JQ;
+  public FileReaderThread(BlockingQueue<PCB> jobQueue){
+  this.jobQueue = jobQueue;
 }
 
 public void run(){

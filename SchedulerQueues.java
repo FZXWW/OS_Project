@@ -7,7 +7,7 @@ public class SchedulerQueues {
 
   public static BlockingQueue<PCB> jobQueue = new LinkedBlockingQueue<>();
   public static Queue<PCB> readyQueue = new LinkedList<>();
-  public int total_memory = 2048;
-  public int used_memory = 0;
+  public static int total_memory = 2048;
+  public static int used_memory = 0;
 
 }
