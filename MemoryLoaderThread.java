@@ -6,7 +6,7 @@ public class MemoryLoaderThread extends Thread {
   private BlockingQueue<PCB> jobQueue;
   private Queue<PCB> readyQueue;
 
-  public MemoryLoaderThread(BlockingQueue<PCB> jobQueue, Queue readyQueue){
+  public MemoryLoaderThread(BlockingQueue<PCB> jobQueue, Queue<PCB> readyQueue){
     this.jobQueue = jobQueue;
     this.readyQueue = readyQueue;
   }
@@ -25,7 +25,7 @@ public class MemoryLoaderThread extends Thread {
           jobQueue.put(job);
           Thread.sleep(100);
         }
-        
+
       } catch(Exception e){
         e.printStackTrace();
       }
