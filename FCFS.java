@@ -9,12 +9,15 @@ public class FCFS {
 
     while(!readyQueue.isEmpty()){
       PCB p = readyQueue.poll();
+      int Enter = currentTime;
       p.waitingTime = currentTime;
       currentTime = currentTime + p.burstTime;
       p.turtnaroundTime = currentTime;
       try {
         Thread.sleep(1000); // 1 second delay (adjust as needed)
-        System.out.print(" P" + p.id + " |");
+        System.out.println("      P" + p.id + "      |");
+        System.out.print(Enter +"          " +p.turtnaroundTime);
+
     } catch (InterruptedException e) {
         e.printStackTrace();
     }
