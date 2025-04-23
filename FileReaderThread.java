@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.concurrent.BlockingQueue;
 
-public class FileReaderThread {
+public class FileReaderThread extends Thread{
 
   private BlockingQueue<PCB> jobQueue;
 
@@ -11,7 +11,7 @@ public class FileReaderThread {
 }
 
 public void run(){
-  try (BufferedReader br = new BufferedReader(new FileReader("test.txt"))){
+  try (BufferedReader br = new BufferedReader(new FileReader("test.txt.txt"))){
     String line;
     while( (line = br.readLine()) != null ){
       String[] parts = line.split("[:;]");
