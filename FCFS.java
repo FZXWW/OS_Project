@@ -12,9 +12,14 @@ public class FCFS {
       p.waitingTime = currentTime;
       currentTime = currentTime + p.burstTime;
       p.turtnaroundTime = currentTime;
-      System.out.println("| P" + p.id + " ");
+      try {
+        Thread.sleep(1000); // 1 second delay (adjust as needed)
+        System.out.print(" P" + p.id + " |");
+    } catch (InterruptedException e) {
+        e.printStackTrace();
     }
-    System.out.println("|");
+    }
+    System.out.println();
 
   }
 
