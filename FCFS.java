@@ -1,9 +1,12 @@
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class FCFS {
   
 
   public static void run( Queue<PCB> readyQueue ){
+
+    Queue<PCB> queue = new LinkedList<>(readyQueue);
 
     int currentTime = 0;
     int count = 0;
@@ -17,8 +20,8 @@ public class FCFS {
     System.out.println("+------------------+----------------+--------------+-------------------+----------------+");
     
 
-    while(!readyQueue.isEmpty()){
-      PCB p = readyQueue.poll();
+    while(!queue.isEmpty()){
+      PCB p = queue.poll();
       
       count++;
       int Enter = currentTime;
