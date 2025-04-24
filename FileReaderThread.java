@@ -5,13 +5,15 @@ import java.util.concurrent.BlockingQueue;
 public class FileReaderThread extends Thread{
 
   private BlockingQueue<PCB> jobQueue;
+  private String path;
 
-  public FileReaderThread(BlockingQueue<PCB> jobQueue){
+  public FileReaderThread(BlockingQueue<PCB> jobQueue, String path){
   this.jobQueue = jobQueue;
+  this.path = path;
 }
 
 public void run(){
-  try (BufferedReader br = new BufferedReader(new FileReader("test.txt.txt"))){
+  try (BufferedReader br = new BufferedReader(new FileReader(path))){
     String line;
     while( (line = br.readLine()) != null ){
       String[] parts = line.split("[:;]");

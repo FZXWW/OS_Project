@@ -31,13 +31,15 @@ public class RR {
       currentTime += excTime;
       p.remainingTime -= excTime;
 
-      if(p.remainingTime > 0 ){
-        queue.add(p);
-      } else{
+       
         Count++;
         p.turtnaroundTime = currentTime;
         totalTurnaroundTime += currentTime;
         totalWaitingTime += p.waitingTime;
+
+        if(p.remainingTime > 0 ){
+          queue.add(p);
+        }
 
         System.out.printf(
           "| %16d | %14d | %12d | %17d | %14d |\n",
@@ -49,7 +51,7 @@ public class RR {
       );
       System.out.println("+------------------+----------------+--------------+-------------------+----------------+");
        
-      }
+      
 
       try{
         Thread.sleep(500);
