@@ -27,7 +27,7 @@ public class FCFS {
       total_Waiting_Time = total_Waiting_Time + p.waitingTime;
       
       currentTime = currentTime + p.burstTime;
-      p.turtnaroundTime = p.burstTime + p.waitingTime;
+      p.turtnaroundTime = p.burstTime + p.waitingTime;// same as TT=CT (all p arrive in 0)
       total_Turnaround_Time = total_Turnaround_Time + (p.turtnaroundTime );
       
       try {
