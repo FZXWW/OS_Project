@@ -11,7 +11,7 @@ public class Main {
     e.printStackTrace();
   }
 
-  FCFS.run(SchedulerQueues.readyQueue);
+  RR.run(SchedulerQueues.readyQueue);
 
 
   }
