@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.concurrent.BlockingQueue;
@@ -7,12 +8,12 @@ public class FileReaderThread extends Thread{
   private BlockingQueue<PCB> jobQueue;
   private String path;
 
-  public FileReaderThread(BlockingQueue<PCB> jobQueue, String path){
+  public FileReaderThread(BlockingQueue<PCB> jobQueue,String path){
   this.jobQueue = jobQueue;
   this.path = path;
 }
 
-public void run(){
+public void run(){ 
   try (BufferedReader br = new BufferedReader(new FileReader(path))){
     String line;
     while( (line = br.readLine()) != null ){
@@ -28,7 +29,7 @@ public void run(){
   } catch(Exception e){
     e.printStackTrace();
   }
-  
+
 }
 
 }
