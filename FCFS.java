@@ -39,11 +39,10 @@ public class FCFS {
         e.printStackTrace();
         }
     }
-    AVG_turnaroundTime = total_Turnaround_Time/count;
-    AVG_WaitingTime = total_Waiting_Time/count; 
+    
     System.out.println();
-    System.out.println("The average waiting time is: " + AVG_WaitingTime);
-    System.out.println("The average turnaround time is: " + AVG_turnaroundTime);
+    System.out.println("The average waiting time is: " +total_Waiting_Time/count);
+    System.out.println("The average turnaround time is: " + total_Turnaround_Time/count);
 
 
   }
