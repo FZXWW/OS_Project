@@ -5,6 +5,7 @@ public class MemoryLoaderThread extends Thread {
 
   private BlockingQueue<PCB> jobQueue;
   private Queue<PCB> readyQueue;
+  
 
   public MemoryLoaderThread(BlockingQueue<PCB> jobQueue, Queue<PCB> readyQueue){
     this.jobQueue = jobQueue;

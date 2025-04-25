@@ -12,9 +12,10 @@ public class PS {
         return Integer.compare(p1.priority, p2.priority); 
       }
     });
-
-    
     priorityQueue.addAll(readyQueue);
+
+    int degreeOfMultiProgramming = readyQueue.size();
+    int numOfExcuted = 0;
 
     int currentTime = 0;
     float total_Turnaround_Time = 0;
@@ -28,25 +29,23 @@ public class PS {
     System.out.println("|    Process ID    |     Start      |      End     | Turnaround Time   | Waiting Time   |  Starved |");
     System.out.println("+------------------+----------------+--------------+-------------------+----------------+----------+");
 
-    // Process the queue
+    
     while (!priorityQueue.isEmpty()) {
-      PCB p = priorityQueue.poll(); // Get the highest priority PCB (lowest priority number)
+      PCB p = priorityQueue.poll(); 
 
       int start = currentTime;
       p.waitingTime = currentTime;
       currentTime += p.burstTime;
       end = currentTime;
+      numOfExcuted++;
+      
 
       p.turtnaroundTime = p.burstTime + p.waitingTime;
       total_Turnaround_Time += p.turtnaroundTime;
       total_Waiting_Time += p.waitingTime;
       count++;
 
-      if (p.waitingTime > p.priority) {
-        isStarved = true;
-      } else {
-        isStarved = false;
-      }
+      isStarved = (numOfExcuted - 1 ) > (degreeOfMultiProgramming -1);
 
       try {
         Thread.sleep(500);
