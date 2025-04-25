@@ -51,7 +51,7 @@ public class PS {
       }else{ isStarved = false; }
 
       try {
-        Thread.sleep(500); // تأخير لمحاكاة المعالجة
+        Thread.sleep(500);
         
         System.out.print("| " + String.format("%16d", p.id) + " | ");
         System.out.print(String.format("%14d", start) + " | ");
@@ -63,7 +63,7 @@ public class PS {
         System.out.println("+------------------+----------------+--------------+-------------------+----------------+----------+");
         
       } catch (InterruptedException e) {
-        System.out.println("حدث خطأ في التأخير");
+        e.printStackTrace();
          }
     }
     System.out.println();
