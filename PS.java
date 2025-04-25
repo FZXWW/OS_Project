@@ -13,7 +13,7 @@ public class PS {
         PCB p1 = queue.get(j);
         PCB p2 = queue.get(j+1);
 
-        if(p1.priority < p2.priority){
+        if(p1.priority > p2.priority){
           PCB temp = p1;
           queue.set(j , p2);
           queue.set(j+1 , temp);
@@ -22,8 +22,8 @@ public class PS {
     }
 
     int currentTime = 0;
-    int total_Turnaround_Time = 0;
-    int total_Waiting_Time = 0;
+    float total_Turnaround_Time = 0;
+    float total_Waiting_Time = 0;
     int count = 0;
     int end ;
     boolean isStarved;
