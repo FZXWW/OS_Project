@@ -39,8 +39,8 @@ public class Main {
         FCFS.run(SchedulerQueues.readyQueue);
     else if(inputt==2)
         RR.run(SchedulerQueues.readyQueue);
-    else if(inputt==3);
-
+    else if(inputt==3)
+        PS.run(SchedulerQueues.readyQueue);
     else if(inputt==4) {
         new FileReaderThread(SchedulerQueues.jobQueue,file).start();
         new MemoryLoaderThread(SchedulerQueues.jobQueue, SchedulerQueues.readyQueue).start();
