@@ -48,6 +48,9 @@ System.out.println(" | " + start + " P" + p.id + " " + end + " | " );
                 TurnAround += end;
 
                 System.out.println(" | " + start + " P" + p.id + " " + end + " (TurnAround: " + end + ") (WaitingTime: " + Wait + " ) | ");
+                synchronized(SchedulerQueues.class){
+                    SchedulerQueues.used_memory -= p.memoryRequired;
+                  }
         }
 
     }
