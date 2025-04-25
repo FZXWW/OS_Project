@@ -16,15 +16,18 @@ public class MemoryLoaderThread extends Thread {
       try{
 
         PCB job = jobQueue.take();
-        if(job.memoryRequired + SchedulerQueues.used_memory <= SchedulerQueues.total_memory){
-          SchedulerQueues.used_memory = SchedulerQueues.used_memory + job.memoryRequired; 
-          job.state = "READY";
-          readyQueue.add(job);
-          System.out.println("Moved into ready queue" + job.id);
-        } else{
-          jobQueue.put(job);
-          Thread.sleep(100);
+        synchronized(SchedulerQueues.class){
+          if(job.memoryRequired + SchedulerQueues.used_memory <= SchedulerQueues.total_memory){
+            SchedulerQueues.used_memory = SchedulerQueues.used_memory + job.memoryRequired; 
+            job.state = "READY";
+            readyQueue.add(job);
+            System.out.println("Moved into ready queue" + job.id);
+          } else{
+            jobQueue.put(job);
+            Thread.sleep(100);
+          }
         }
+       
 
       } catch(Exception e){
         e.printStackTrace();

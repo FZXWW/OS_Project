@@ -32,6 +32,8 @@ public class FCFS {
       currentTime += p.burstTime;
       p.turtnaroundTime = p.burstTime + p.waitingTime;// same as TT=CT (all p arrive in 0)
       total_Turnaround_Time +=  (p.turtnaroundTime );
+
+      
       
       try {
         Thread.sleep(500); 
@@ -40,6 +42,10 @@ public class FCFS {
 
        } catch (InterruptedException e) {
         e.printStackTrace();
+        }
+
+        synchronized(SchedulerQueues.class){
+          SchedulerQueues.used_memory -= p.memoryRequired;
         }
     }
     
