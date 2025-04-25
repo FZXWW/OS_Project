@@ -7,7 +7,7 @@ private final static long quantum = 7; // The quantum Number 7
 
     public static void run( Queue<PCB> readyQueue ){
 
-        Queue<PCB> temp_queue = new LinkedList<PCB>(readyQueue); // Temp Queue to don't modify the original queue
+        //Queue<PCB> temp_queue = new LinkedList<PCB>(readyQueue); // Temp Queue to don't modify the original queue
 
         long  time = 0; // Start Time
 
@@ -17,9 +17,15 @@ private final static long quantum = 7; // The quantum Number 7
 
         System.out.println();
 
-        while(!(temp_queue.isEmpty())) { // To Loop To Procces all the Processes
+        System.out.println("Table:");
+        System.out.println("+------------------+----------------+--------------+-------------------+----------------+");
+        System.out.println("|    Process ID    |     Start      |      End     | Turnaround Time   | Waiting Time   |");
+        System.out.println("+------------------+----------------+--------------+-------------------+----------------+");
 
-         PCB p = temp_queue.poll(); // Pull The Procces whose turn it is
+
+        while(!(readyQueue.isEmpty())) { // To Loop To Procces all the Processes
+
+         PCB p = readyQueue.poll(); // Pull The Procces whose turn it is
 
 
          long actualQuantum; // Intailize The Variable to take the min between quantum or process remainingTime
@@ -34,23 +40,48 @@ private final static long quantum = 7; // The quantum Number 7
 
          while(time < end);
          p.remainingTime -= actualQuantum; // Calalute The Proccce remainingTime
+if(p.remainingTime > 0) {
+                readyQueue.add(p); // Add The Procce again if it not finish
+                System.out.printf("| %16s | %14d | %12d | %17s | %14s |\n",
+                        "P" + p.id,
+                        start,
+                        end,
+                        "---",
+                        "---"
+                    );
+                    System.out.println("+------------------+----------------+--------------+-------------------+----------------+");
 
-
-            if(p.remainingTime > 0) {
-                temp_queue.add(p); // Add The Procce again if it not finish
-System.out.println(" | " + start + " P" + p.id + " " + end + " | " );
                 }
             else {
+
 
                 number_of_proocce++; // Count The Proocce Number
                 int Wait = (int)(end - p.burstTime); // Calalute The Waiting Time For Each Procce
                 Waiting_Time += Wait; // Add The Waiting Time For Each Procce To Find The Avg
                 TurnAround += end;
 
-                System.out.println(" | " + start + " P" + p.id + " " + end + " (TurnAround: " + end + ") (WaitingTime: " + Wait + " ) | ");
+                p.turtnaroundTime = (int) end;
+                p.waitingTime = (int)(end - p.burstTime);
+
+                System.out.printf("| %16s | %14d | %12d | %17d | %14d |\n",
+                    "P" + p.id,
+                    start,
+                    end,
+                    p.turtnaroundTime,
+                    p.waitingTime
+                );
+                System.out.println("+------------------+----------------+--------------+-------------------+----------------+");
+
                 synchronized(SchedulerQueues.class){
                     SchedulerQueues.used_memory -= p.memoryRequired;
                   }
+                  try{
+                    Thread.sleep(1000);
+                  }catch( Exception e){
+                    e.printStackTrace();
+                  }
+
+
         }
 
     }

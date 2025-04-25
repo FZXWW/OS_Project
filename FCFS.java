@@ -6,7 +6,7 @@ public class FCFS {
 
   public static void run( Queue<PCB> readyQueue ){
 
-    Queue<PCB> queue = new LinkedList<>(readyQueue);
+  
 
     int currentTime = 0;
     int count = 0;
@@ -14,14 +14,14 @@ public class FCFS {
     int AVG_WaitingTime = 0;
     int total_Turnaround_Time = 0;
     int AVG_turnaroundTime = 0;
-    System.out.println("Gantt Chart: ");
+    System.out.println("Table: ");
     System.out.println("+------------------+----------------+--------------+-------------------+----------------+");
     System.out.println("|    Process ID    |     Start      |      End     | Turnaround Time   | Waiting Time   |");
     System.out.println("+------------------+----------------+--------------+-------------------+----------------+");
     
 
-    while(!queue.isEmpty()){
-      PCB p = queue.poll();
+    while(!readyQueue.isEmpty()){
+      PCB p = readyQueue.poll();
       
       count++;
       int Enter = currentTime;
@@ -49,10 +49,13 @@ public class FCFS {
         }
     }
     
-    System.out.println();
-    System.out.println("The average waiting time is: " +total_Waiting_Time/count);
-    System.out.println("The average turnaround time is: " + total_Turnaround_Time/count);
-
+    if(count != 0 ){
+      System.out.println();
+      System.out.println("The average waiting time is: " +total_Waiting_Time/count);
+      System.out.println("The average turnaround time is: " + total_Turnaround_Time/count);
+  
+    }
+   
 
   }
 

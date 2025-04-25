@@ -5,7 +5,7 @@ public class MemoryLoaderThread extends Thread {
 
   private BlockingQueue<PCB> jobQueue;
   private Queue<PCB> readyQueue;
-  
+  public static int countPinReadyQueue = 0;
 
   public MemoryLoaderThread(BlockingQueue<PCB> jobQueue, Queue<PCB> readyQueue){
     this.jobQueue = jobQueue;
@@ -22,7 +22,8 @@ public class MemoryLoaderThread extends Thread {
             SchedulerQueues.used_memory = SchedulerQueues.used_memory + job.memoryRequired; 
             job.state = "READY";
             readyQueue.add(job);
-            System.out.println("Moved into ready queue" + job.id);
+            countPinReadyQueue++;
+            //System.out.println("Moved into ready queue" + job.id);
           } else{
             jobQueue.put(job);
             Thread.sleep(100);
