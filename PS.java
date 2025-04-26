@@ -11,8 +11,8 @@ public class PS {
     });
 
     int currentTime = 0;
-    float total_Turnaround_Time = 0;
-    float total_Waiting_Time = 0;
+    double total_Turnaround_Time = 0;
+    double total_Waiting_Time = 0;
     int count = 0;
     int end;
     boolean isStarved;
@@ -82,8 +82,13 @@ public class PS {
         e.printStackTrace();
       }
 
-      synchronized (SchedulerQueues.class) {
+      synchronized(SchedulerQueues.class){
         SchedulerQueues.used_memory -= p.memoryRequired;
+      }
+      try{
+        Thread.sleep(1000);
+      }catch( Exception e){
+        e.printStackTrace();
       }
     }
     if( count != 0 ){

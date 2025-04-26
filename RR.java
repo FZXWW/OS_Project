@@ -11,8 +11,8 @@ private final static long quantum = 7; // The quantum Number 7
 
         long  time = 0; // Start Time
 
-        int Waiting_Time = 0; // Waiting_Time For The Proocces To Find The Avg
-        int TurnAround = 0; // TurnAround For The Proocces To Find The Avg
+        double Waiting_Time = 0; // Waiting_Time For The Proocces To Find The Avg
+        double TurnAround = 0; // TurnAround For The Proocces To Find The Avg
         int number_of_proocce = 0; // To Count The Number Of Prooces to find the Avg
 
         System.out.println();
@@ -39,8 +39,8 @@ private final static long quantum = 7; // The quantum Number 7
          time = end; // To Change The Time
 
          while(time < end);
-         p.remainingTime -= actualQuantum; // Calalute The Proccce remainingTime
-if(p.remainingTime > 0) {
+            p.remainingTime -= actualQuantum; // Calalute The Proccce remainingTime
+            if(p.remainingTime > 0) {
                 readyQueue.add(p); // Add The Procce again if it not finish
                 System.out.printf("| %16s | %14d | %12d | %17s | %14s |\n",
                         "P" + p.id,
@@ -50,6 +50,13 @@ if(p.remainingTime > 0) {
                         "---"
                     );
                     System.out.println("+------------------+----------------+--------------+-------------------+----------------+");
+
+                    try{
+                        Thread.sleep(1000);
+                      }catch( Exception e){
+                        e.printStackTrace();
+                      }
+    
 
                 }
             else {

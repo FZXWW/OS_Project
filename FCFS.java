@@ -47,6 +47,11 @@ public class FCFS {
         synchronized(SchedulerQueues.class){
           SchedulerQueues.used_memory -= p.memoryRequired;
         }
+        try{
+          Thread.sleep(1000);
+        }catch( Exception e){
+          e.printStackTrace();
+        }
     }
     
     if(count != 0 ){

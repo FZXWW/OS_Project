@@ -56,6 +56,12 @@ public class Main {
     else if(inputt==4) {
         new FileReaderThread(SchedulerQueues.jobQueue,file).start();
         new MemoryLoaderThread(SchedulerQueues.jobQueue, SchedulerQueues.readyQueue).start();
+        try{
+            Thread.sleep(1600);
+          }catch( Exception e){
+            e.printStackTrace();
+          }
+
     }
     else if(inputt==5) {
         System.out.println("Goodbye!!");
