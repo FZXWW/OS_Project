@@ -6,7 +6,7 @@ public class PS {
 
     PriorityQueue<PCB> priorityQueue = new PriorityQueue<>(new Comparator<PCB>() {
       public int compare(PCB p1, PCB p2) {
-        return Integer.compare(p1.priority, p2.priority);
+        return Integer.compare(p2.priority, p1.priority);
       }
     });
 
