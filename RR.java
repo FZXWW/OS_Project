@@ -38,7 +38,7 @@ private final static long quantum = 7; // The quantum Number 7
          long end = start + actualQuantum; // To Calalute The Procces End Time
          time = end; // To Change The Time
 
-         while(time < end);
+        
             p.remainingTime -= actualQuantum; // Calalute The Proccce remainingTime
             if(p.remainingTime > 0) {
                 readyQueue.add(p); // Add The Procce again if it not finish

@@ -11,9 +11,9 @@ public class FCFS {
     int currentTime = 0;
     int count = 0;
     double total_Waiting_Time = 0;
-    double AVG_WaitingTime = 0;
+    //double AVG_WaitingTime = 0; 
     double total_Turnaround_Time = 0;
-    double AVG_turnaroundTime = 0;
+    //double AVG_turnaroundTime = 0;
     System.out.println("Table: ");
     System.out.println("+------------------+----------------+--------------+-------------------+----------------+");
     System.out.println("|    Process ID    |     Start      |      End     | Turnaround Time   | Waiting Time   |");

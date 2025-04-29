@@ -17,7 +17,7 @@ public class PS {
     int end;
     boolean isStarved;
     int numOfExcute = 0;
-    int degreeOfMultiProgramming = readyQueue.size() - 1;
+    int degreeOfMultiProgramming = readyQueue.size();
 
     int alreadyAdded = 0;
 
@@ -42,7 +42,7 @@ public class PS {
           break; 
         } else {
           try {
-            Thread.sleep(200); 
+            Thread.sleep(200);  
           } catch (InterruptedException e) {
             e.printStackTrace();
           }
